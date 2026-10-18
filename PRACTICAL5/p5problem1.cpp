@@ -28,7 +28,7 @@ public:
             head = tail = newNode;
         } else {
             newNode->next = head;
-            head->prev = newNode;   // Extra step in doubly linked list
+            head->prev = newNode;   
             head = newNode;
         }
         count++;

@@ -8,6 +8,7 @@ int main() {
     int n;
     cout << "Enter number of operations: ";
     cin >> n;
+    
     for (int i = 0; i < n; i++) {
         string operation;
         cin >> operation;

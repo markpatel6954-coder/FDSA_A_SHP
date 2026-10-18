@@ -2,40 +2,41 @@
 #include <vector>
 #include <queue>
 using namespace std;
-vector<int> g[100];
+vector<int> adj[100];
 bool visited[100];
-void DFS(int u) {
-    visited[u] = true;
-    cout << u << " ";
-    for (int v : g[u])
-        if (!visited[v]) DFS(v);
+void DFS(int v) {
+    visited[v] = true;
+    cout << v << " ";
+    for (int u : adj[v])
+        if (!visited[u]) DFS(u);
 }
-void BFS(int s) {
-    queue<int> q;
+void BFS(int start) {
     fill(visited, visited + 100, false);
-    visited[s] = true;
-    q.push(s);
+    queue<int> q;
+    q.push(start);
+    visited[start] = true;
     while (!q.empty()) {
-        int u = q.front();
+        int v = q.front();
         q.pop();
-        cout << u << " ";
-        for (int v : g[u])
-            if (!visited[v]) {
-                visited[v] = true;
-                q.push(v);
+        cout << v << " ";
+        for (int u : adj[v])
+            if (!visited[u]) {
+                visited[u] = true;
+                q.push(u);
             }
     }
 }
 int main() {
-    int n, m, u, v, s;
+    int n, m, u, v, start;
     cin >> n >> m;
     while (m--) {
         cin >> u >> v;
-        g[u].push_back(v);
-        g[v].push_back(u);
+        adj[u].push_back(v);
+        adj[v].push_back(u);
     }
-    cin >> s;
-    DFS(s);
-    cout << "\n";
-    BFS(s);
+    cin >> start;
+    DFS(start);
+    cout << endl;
+    BFS(start);
+    return 0;
 }

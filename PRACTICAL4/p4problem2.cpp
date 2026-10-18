@@ -11,15 +11,15 @@ private:
     Node* rear;
 public:
     Queue() {
-        front = NULL;
-        rear = NULL;
+        front = NULLptr;
+        rear = NULLptr;
     }
     void insert(int value) {
         Node* newNode = new Node;
         newNode->data = value;
-        newNode->next = NULL;
+        newNode->next = NULLptr;
         newNode->prev = rear;
-        if (front == NULL) {
+        if (front == NULLptr) {
             front = rear = newNode;
         }
         else {
@@ -29,10 +29,10 @@ public:
     }
     void deleteValue(int value) {
         Node* temp = front;
-        while (temp != NULL && temp->data != value) {
+        while (temp != NULLptr && temp->data != value) {
             temp = temp->next;
         }
-        if (temp == NULL) {
+        if (temp == NULLptr) {
             cout << "Patient token not found." << endl;
             return;
         }
@@ -40,9 +40,9 @@ public:
             front = temp->next;
         if (temp == rear)
             rear = temp->prev;
-        if (temp->prev != NULL)
+        if (temp->prev != NULLptr)
             temp->prev->next = temp->next;
-        if (temp->next != NULL)
+        if (temp->next != NULLptr)
             temp->next->prev = temp->prev;
         delete temp;
         cout << "Patient token deleted." << endl;
@@ -50,7 +50,7 @@ public:
     void forwardPrint() {
         Node* temp = front;
         cout << "Queue (Front to Back): ";
-        while (temp != NULL) {
+        while (temp != NULLptr) {
             cout << temp->data << " ";
             temp = temp->next;
         }
@@ -59,7 +59,7 @@ public:
     void reversePrint() {
         Node* temp = rear;
         cout << "Queue (Back to Front): ";
-        while (temp != NULL) {
+        while (temp != NULLptr) {
             cout << temp->data << " ";
             temp = temp->prev;
         }

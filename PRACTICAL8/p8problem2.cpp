@@ -1,29 +1,29 @@
 #include <iostream>
 using namespace std;
 struct Node {
-    int data;
+    int code;
     Node *left, *right;
-    Node(int x) : data(x), left(NULL), right(NULL) {}
+    Node(int x) : code(x), left(nullptr), right(nullptr) {}
 };
 Node* insert(Node* root, int x) {
-    if (root == NULL) return new Node(x);
-    if (x < root->data)
+    if (!root) return new Node(x);
+    if (x < root->code)
         root->left = insert(root->left, x);
-    else if (x > root->data)
+    else if (x > root->code)
         root->right = insert(root->right, x);
     return root;
 }
 void inorder(Node* root) {
-    if (root == NULL) return;
+    if (!root) return;
     inorder(root->left);
-    cout << root->data << " ";
+    cout << root->code << " ";
     inorder(root->right);
 }
 int main() {
-    Node* root = NULL;
+    Node* root = nullptr;
     int n, x;
     cin >> n;
-    for (int i = 0; i < n; i++) {
+    while (n--) {
         cin >> x;
         root = insert(root, x);
     }
